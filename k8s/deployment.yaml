@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zoo-kms
+  namespace: zoo-system
+  labels:
+    app: zoo-kms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zoo-kms
+  template:
+    metadata:
+      labels:
+        app: zoo-kms
+    spec:
+      containers:
+        - name: kms
+          image: ghcr.io/zoo-labs/kms:latest
+          ports:
+            - containerPort: 8443
+          env:
+            - name: KMS_ORG
+              value: zoo
+            - name: KMS_KEY_PREFIX
+              value: zoo/
+            - name: KMS_BRAND_NAME
+              value: Zoo
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: zoo-db-credentials
+                  key: kms-url
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zoo-kms
+  namespace: zoo-system
+spec:
+  selector:
+    app: zoo-kms
+  ports:
+    - port: 8443
+      targetPort: 8443
