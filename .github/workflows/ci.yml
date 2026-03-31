@@ -33,4 +33,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64
-          tags: ghcr.io/zooai/kms:latest,ghcr.io/zooai/kms:${{ github.sha }}
+          tags: ghcr.io/zoo-labs/kms:latest,ghcr.io/zoo-labs/kms:${{ github.sha }}

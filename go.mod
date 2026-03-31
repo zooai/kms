@@ -1,3 +1,3 @@
-module github.com/zooai/kms
+module github.com/zoo-labs/kms
 
 go 1.26.1
