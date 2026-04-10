@@ -15,8 +15,7 @@ jobs:
     uses: hanzoai/.github/.github/workflows/docker-build.yml@main
     with:
       image: ghcr.io/zooai/kms
-      runner-amd64: zoo-build-linux-amd64
-      runner-arm64: ubuntu-24.04-arm
+      platforms: linux/amd64
     secrets: inherit
 
   notify-universe:
