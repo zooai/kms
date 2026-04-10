@@ -3,7 +3,7 @@ name: Docker
 on:
   workflow_dispatch:
   push:
-    branches: [main, dev]
+    branches: [main, dev, test]
     tags: ['v*']
 
 permissions:
@@ -16,5 +16,5 @@ jobs:
     with:
       image: ghcr.io/zooai/kms
       platforms: linux/amd64
-      runner-amd64: ubuntu-latest
+      runner-amd64: zoo-build-linux-amd64
     secrets: inherit
