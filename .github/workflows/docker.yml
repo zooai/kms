@@ -13,7 +13,4 @@ jobs:
       image: ghcr.io/zooai/kms
       runner-amd64: ubuntu-latest
       runner-arm64: ubuntu-24.04-arm
-      build-args: |
-        GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-        GITHUB_ACTOR=${{ github.actor }}
     secrets: inherit
