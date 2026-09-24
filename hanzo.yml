@@ -1,0 +1,9 @@
+# Hanzo CI/CD for zooai/kms: .github/workflows/cicd.yml imports hanzoai/ci,
+# which reads this file. The build door builds each image, one BuildKit Job
+# per platform.
+images:
+  - name: kms
+    context: .
+    dockerfile: Dockerfile
+    repo: ghcr.io/zooai/kms
+    platforms: [linux/amd64]
